@@ -1,22 +1,23 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth, getAuth, connectAuthEmulator } from '@angular/fire/auth';
-import { provideFirestore, getFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
-import { provideFunctions, getFunctions, connectFunctionsEmulator} from '@angular/fire/functions';
-import { provideMessaging, getMessaging } from '@angular/fire/messaging';
-import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fire/storage';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+
 import { routes } from './app.routes';
-import { provideRouter } from '@angular/router';
+import { provideClientHydration } from '@angular/platform-browser';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+
+import { environment } from '../environments/environment.development';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, withComponentInputBinding()),
+    provideClientHydration(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
-    provideFunctions(() => getFunctions()),
-    provideStorage(() => getStorage()),
-    provideMessaging(() => getMessaging()),
-    provideRouter(routes)
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
 };

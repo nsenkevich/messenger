@@ -1,11 +1,12 @@
 export const environment = {
+  production: true,
   firebase: {
-    apiKey: "AIzaSyAMaLLKSSvQOTaNcydkx5EfltFUQq0dfWM",
-    authDomain: "messenger-826b9.firebaseapp.com",
-    projectId: "messenger-826b9",
-    storageBucket: "messenger-826b9.appspot.com",
-    messagingSenderId: "227475481309",
-    appId: "1:227475481309:web:4aacfa942eb2b3db1ff134",
-    measurementId: "G-1BLCTW2WLW"
+    apiKey: "AIzaSyBjojzRI6cvUvVc2y2RyjEKIB-2iqF3D40",
+    authDomain: "chat-with-md.firebaseapp.com",
+    projectId: "chat-with-md",
+    storageBucket: "chat-with-md.appspot.com",
+    messagingSenderId: "141926023417",
+    appId: "1:141926023417:web:3c42d075ba6785c3a9a228",
+    measurementId: "G-F9L9V5CQ6J"
   },
 };
